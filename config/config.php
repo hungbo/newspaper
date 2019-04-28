@@ -10,8 +10,3 @@ $config = [
 $models = [
 	'user'
 ];
-
-$controller = [
-	'admin',
-	'home'
-];

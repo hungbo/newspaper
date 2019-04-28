@@ -12,10 +12,12 @@ class Controller
 		# code...
 	}
 
-	public function loadView($uri)
+	public function loadView($name = [])
 	{
-		echo 'loadview';
-		// require $helper->url($uri);
+		foreach ($name as $key) {
+			echo $key;
+			require('views/'.$key.'.php');
+		}
 	}
 }
 ?>

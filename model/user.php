@@ -22,10 +22,7 @@ class user
 
         
         if ($this->username == $user['username'] && $this->password == $user['password'] && $user['level'] == 0) {
-            // echo $user['username'];
-            // echo $user['password'];
-            // echo $user['level'];
-            $session->set($this->username,$user['level']);
+            $session->set($username,$user['level']);
         }
 
 
@@ -33,10 +30,9 @@ class user
     public function logged()
     {
         global $session;
-        var_dump($session->get($this->username));
-        // if (!empty($session->get($this->username))) {
-        //     return $session->get($this->username);
-        // }
+        if (!empty($session->get($this->username))) {
+            return $session->get($this->username);
+        }
         
     }
     public function logout()

@@ -1,24 +1,18 @@
 <?php
 
+class admin extends Controller
+{
+    public function index()
+    {
+        parent::loadView(array('admin/login'));
+    }
 
-try {
-    // echo $helper->url('views/admin/login.php');
-    // include $helper->url('views/admin/login.php');
-    // $user->login('admin','123456');
-    $user->logged();
-    // if ($user->logged() == false) {
-        
-    // }else {
-    //     // print_r($user->logged());
-    // }
+    public function login()
+    {
+        // global $helper;
+        echo 'login';
+        require('views/admin/login.php');
 
-} catch (\Throwable $th) {
-    echo $th->getMessage();
+    }
 }
-
-
-
-
-
-
 ?>

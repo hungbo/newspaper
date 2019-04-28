@@ -1,26 +1,28 @@
 <?php
 require 'config/config.php';
 
-//load file
+//load file and create object
 foreach ($config as $key) {
 	require $key.'.php';
 	$$key =  new $key();
 }
 
-
-foreach ($controller as $key) {
-	require 'controller/'.$key.'.php';
-	$$key =  new $key();
-}
-
-// spl_autoload_register(function ($class)
-// {
-// 	require $class.'.php';
-// });
-
 foreach ($models as $model) {
 	require ('model/'.$model.'.php');
-	$$model = new $model();
+}
+
+//load and create controller
+function load($controller,$action)
+{
+	$path = 'controller/'.$controller.'.php';
+
+	if (file_exists($path)) {
+		require $path;
+		$controller = new $controller();
+		return $controller->$action();
+	}else {
+		require 'views/404.php';
+	}
 }
 
 ?>

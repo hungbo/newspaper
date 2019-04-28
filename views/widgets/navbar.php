@@ -1,3 +1,3 @@
 <nav>
-	<a href="<?php echo "?controller=controller&action=admin"; ?>">login</a>
+	<a href="<?php echo "?controller=admin&action=index"; ?>">login</a>
 </nav>

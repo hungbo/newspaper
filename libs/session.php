@@ -8,14 +8,12 @@ class session
 
 	public function set($name, $value)
 	{
-		if (empty($_SESSION[$name])) {
-			$_SESSION[$name] = $value;
-		}	 
+		return $_SESSION[$name] = $value;
 	}
 
-	function get($name)
+	function get()
 	{
-		return $_SESSION[$name];
+		return $_SESSION;
 	}
 
 	function remove()
