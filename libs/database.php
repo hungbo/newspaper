@@ -6,7 +6,11 @@ class database
 {
 
 	protected $hostname = "localhost";
-	protected $dbname = "test";
+	protected $dbname = "newspaper";
+	protected $username = "root";
+	protected $password = "hungbo";
+
+	private $table = '';
 
 	protected $db;
 	
@@ -19,7 +23,7 @@ class database
 	{
 		if ($this->db == null) {
 			try {
-				$this->db = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", null, null);
+				$this->db = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
 				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				return $this->db;
 			} catch (Exception $e) {
@@ -34,11 +38,19 @@ class database
 		$this->db = null;
 	}
 
-	public function getByid($id)
+	public function getBy($table,$data = [])
 	{
-		$sql = "SELECT * FROM user WHERE id=:id";
+		foreach ($data as $key => $value) {
+			if ($key === 'column') {
+				$sql = "SELECT $value FROM $table";
+			}
+			if ($key === 'id') {
+				$sql .= " WHERE id=$value";
+			}
+		}
+
 		$stmt = $this->db->prepare($sql);
-		$stmt->bindParam(':id',$id);
+		$stmt->bindParam(':id', $value, PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -48,7 +60,7 @@ class database
 	public function getAll()
 	{
 		$result = array();
-		$sql = "SELECT * FROM user";
+		$sql = "SELECT * FROM users";
 		$stmt = $this->db->prepare($sql);
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

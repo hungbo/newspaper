@@ -1,15 +1,8 @@
 <?php
-loadView('views/widgets/header.php');
+require('widgets/header.php');
 
-// deleteSession();
+require('widgets/navbar.php');
 
-if (getSession('username') != null) {
-	redirect(url("?controller=controller&action=adminController"));
-	// echo url("?controller=controller&action=adminController");
-}
-
-echo 'adas';
-
-loadView('views/widgets/footer.php');
+require('widgets/footer.php');
 
 ?>

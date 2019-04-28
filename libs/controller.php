@@ -5,16 +5,17 @@
 
 class Controller
 {
-	protected $folder;
+
 	
 	function __construct()
 	{
 		# code...
 	}
 
-	public function loadView()
+	public function loadView($uri)
 	{
-		
+		echo 'loadview';
+		// require $helper->url($uri);
 	}
 }
 ?>

@@ -1,18 +1,26 @@
 <?php
-$config = [
-	'database',
-	'helper',
-	'session',
-	'role'
-];
+require 'config/config.php';
 
+//load file
 foreach ($config as $key) {
-	require_once $key.'.php';
+	require $key.'.php';
+	$$key =  new $key();
 }
 
-function loadView($uri)
-{
-	return include_once $uri;
+
+foreach ($controller as $key) {
+	require 'controller/'.$key.'.php';
+	$$key =  new $key();
+}
+
+// spl_autoload_register(function ($class)
+// {
+// 	require $class.'.php';
+// });
+
+foreach ($models as $model) {
+	require ('model/'.$model.'.php');
+	$$model = new $model();
 }
 
 ?>

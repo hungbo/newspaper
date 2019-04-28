@@ -1,23 +1,31 @@
-<?php 
-session_start();
-function setSession($value)
+<?php
+class session
 {
-	if (!isset($_SESSION['username'])) {
-		return $_SESSION['username'] = $value;
+	public function __construct()
+	{
+		session_start();
+	}
+
+	public function set($name, $value)
+	{
+		if (empty($_SESSION[$name])) {
+			$_SESSION[$name] = $value;
+		}	 
+	}
+
+	function get($name)
+	{
+		return $_SESSION[$name];
+	}
+
+	function remove()
+	{
+		if (isset($_SESSION[$name])) {
+			unset($_SESSION[$name]);
+		}
 	}
 }
 
-function getSession()
-{
-	return isset($_SESSION['username']) ? $_SESSION['username'] : false;
-}
-
-function deleteSession()
-{
-	if (isset($_SESSION['username'])) {
-		unset($_SESSION['username']);
-	}
-}
 
 
 ?>
