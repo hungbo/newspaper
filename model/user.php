@@ -4,16 +4,16 @@ class user
 
     private $username;
     private $password;
+    private $level;
 
     public function __construct()
     {
-        # code...
+       
     }
 
     public function login($username,$password)
     {
-        global $database;
-        global $session;
+        global $database, $session;
 
         $this->username = $username;
         $this->password = $password;
@@ -37,7 +37,13 @@ class user
     }
     public function logout()
     {
-        # code...
+        global $session;
+        foreach ($session->get($this->username) as $key => $value) {
+            $this->username = $key;
+        }
+        if (isset($this->username)) {
+              $session->remove($this->username);
+        }
     }
     public function changePassword()
     {

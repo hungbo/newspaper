@@ -23,7 +23,8 @@ class database
 	{
 		if ($this->db == null) {
 			try {
-				$this->db = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
+				// $this->db = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
+				$this->db = new PDO("mysql:host=$this->hostname;dbname=$this->dbname",$this->username);
 				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				return $this->db;
 			} catch (Exception $e) {
@@ -36,6 +37,11 @@ class database
 	public function disConnect()
 	{
 		$this->db = null;
+	}
+
+	public function query($sql)
+	{
+		$this->db->query($sql)->fetch(PDO::FETCH_ASSOC);
 	}
 
 	public function getBy($table,$data = [])

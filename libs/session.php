@@ -16,7 +16,7 @@ class session
 		return $_SESSION;
 	}
 
-	function remove()
+	function remove($name)
 	{
 		if (isset($_SESSION[$name])) {
 			unset($_SESSION[$name]);

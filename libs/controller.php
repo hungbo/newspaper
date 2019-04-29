@@ -9,13 +9,13 @@ class Controller
 	
 	function __construct()
 	{
-		# code...
+		
 	}
 
 	public function loadView($name = [])
 	{
 		foreach ($name as $key) {
-			echo $key;
+			echo $key."<br>";
 			require('views/'.$key.'.php');
 		}
 	}

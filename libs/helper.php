@@ -3,12 +3,12 @@ class helper
 {
 	function url($uri)
 	{
-		echo 'http://localhost/newspaper/'.$uri;
+		return 'http://localhost/newspaper/'.$uri;
 	}
 
 	function redirect($url)
 	{
-		header("Location: ".$url);
+		header("Location: ".$this->url($url));
 	}
 }
 
