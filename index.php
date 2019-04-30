@@ -1,5 +1,5 @@
 <!--
-04/29 早班 YB kane 汇报
+04/30 早班 QJC kane 汇报
 1/ 出款卡冻结数量：0张
 2/ 出款卡冻结金额：0元 
 3/ 重复出款/上分金额：0笔
@@ -14,6 +14,8 @@
 
 
 
+
+<?php require('views/widgets/header.php'); ?>
 
 <?php 
 
@@ -30,3 +32,4 @@ if (empty($controller) && empty($action)) {
 load($controller,$action);
 
 ?>
+<?php require('views/widgets/footer.php'); ?>
