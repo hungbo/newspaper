@@ -16,6 +16,7 @@ class admin extends Controller
         }    
         
         parent::loadView(['admin/dashboard']);
+        parent::loadView(['post/postList']);
 
     }
 

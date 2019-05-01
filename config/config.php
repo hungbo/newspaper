@@ -8,5 +8,6 @@ $config = [
 ];
 
 $models = [
-	'user'
+	'user',
+	'postCollection'
 ];

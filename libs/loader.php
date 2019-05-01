@@ -11,6 +11,8 @@ foreach ($models as $model) {
 	require ('model/'.$model.'.php');
 }
 
+require('controller/post.php');
+
 //load and create controller
 function load($controller,$action)
 {

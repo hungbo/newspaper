@@ -63,16 +63,16 @@ class database
 		return $result;
 	}
 
-	public function getAll()
+	public function getAll($table)
 	{
 		$result = array();
-		$sql = "SELECT * FROM users";
+		$sql = "SELECT * FROM $table";
 		$stmt = $this->db->prepare($sql);
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			$result[] = $row;
 		}
-		var_dump($result);
+		return $result;
 	}
 
 	public function add()

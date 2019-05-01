@@ -15,7 +15,6 @@ class Controller
 	public function loadView($name = [])
 	{
 		foreach ($name as $key) {
-			echo $key."<br>";
 			require('views/'.$key.'.php');
 		}
 	}
