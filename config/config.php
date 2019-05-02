@@ -11,3 +11,9 @@ $models = [
 	'user',
 	'postCollection'
 ];
+
+$controllers = [
+		'admin',
+		'home',
+		'post'
+];

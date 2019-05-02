@@ -2,3 +2,21 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+.paginate {
+	color: red;
+}
+.paginate ul {
+	float: left;
+}
+.paginate ul li {
+	list-style: none;
+}
+
+.paginate ul li a {
+	text-decoration: none;
+}
+
+#post-list {
+	color: red;
+}

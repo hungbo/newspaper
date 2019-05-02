@@ -11,7 +11,11 @@ foreach ($models as $model) {
 	require ('model/'.$model.'.php');
 }
 
-require('controller/post.php');
+
+foreach ($controllers as $key) {
+	require('controller/'.$key.'.php');
+}
+
 
 //load and create controller
 function load($controller,$action)
@@ -19,7 +23,7 @@ function load($controller,$action)
 	$path = 'controller/'.$controller.'.php';
 
 	if (file_exists($path)) {
-		require $path;
+		// require $path;
 		$controller = new $controller();
 		return $controller->$action();
 	}else {

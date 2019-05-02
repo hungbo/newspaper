@@ -80,14 +80,44 @@ class database
 		# code...
 	}
 
-	public function update()
+	public function update($table,$data = [],$where = [])
 	{
-		# code...
+		$changeValue = '';
+		$post_id = '';
+		$values = [];
+		foreach ($where as $item => $id) {
+			$post_id .= $item."=:id";
+		}
+		foreach ($data as $key => $value) {
+			$changeValue .= $key.'="'.$value.'",';
+			$values[] = $value;
+		}
+		// var_dump($changeValue);
+		$sql = "UPDATE $table SET ".rtrim($changeValue,',')." WHERE ".$post_id;
+		$stmt = $this->db->prepare($sql);
+		foreach ($values as $value) {
+			// $stmt->bindParam(":$value", $value);
+		}
+
+		$stmt->bindParam(':id', $id);
+		$stmt->execute();
+		// return $this->table;
+
 	}
 
-	public function delete()
+	public function delete($table, $where = [])
 	{
-		# code...
+		$id = 0;
+		foreach ($where as $key => $value) {
+			$id = $value;
+		}
+		$sql = "DELETE FROM $table WHERE $key=:id";
+		$stmt = $this->db->prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		$stmt->execute();
+
+		return $this->table;
 	}
 }
 ?>
