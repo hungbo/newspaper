@@ -10,5 +10,10 @@ class input
     {
         return isset($_GET[$key]) ? $_GET[$key] : '';
     }
+
+    public function is_submit($key)
+    {
+    	return isset($_POST[$key]) ?? false;
+    }
  
 }

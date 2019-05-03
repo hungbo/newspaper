@@ -5,8 +5,15 @@ $level = $admin->getValue('level');
 
 
 ?>
-
- 
-<p>hello <?php echo $user.' today is: '.Date('Y-m-d'); ?></p>
-<a href="<?php echo "?controller=admin&action=logout"; ?>">logout</a>
-<hr />
+<div class="container">
+	<div id="nav-bar">
+		<nav>
+			<p><?php echo 'today is: '.Date('Y-m-d'); ?></p>
+			<div>
+				<p>hello <?php echo $user; ?> |</p>
+				<a href="<?php echo "?controller=admin&action=logout"; ?>">logout</a>
+			</div>	
+		</nav>
+	</div>
+</div>
+<div class="clear"></div>

@@ -9,7 +9,8 @@ $config = [
 
 $models = [
 	'user',
-	'postCollection'
+	'postCollection',
+	'paginator'
 ];
 
 $controllers = [

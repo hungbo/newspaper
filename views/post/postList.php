@@ -1,13 +1,13 @@
 <?php 
-echo 'post list';
-
 $post = new post();
 global $helper, $input;
 $posts = $post->list();
+$paginate = new paginator();
 $id = $input->get('id');
 
 
 ?>
+<div class="container">
 <div id="post-list">
 <table>
 	<tr>
@@ -55,12 +55,9 @@ $id = $input->get('id');
 	<?php } ?>
 </table>
 </div>
-<div class="paginate">
-	<ul>
-		<li><a href="">prev</a></li>
-		<li><a href="">1</a></li>
-		<li><a href="">2</a></li>
-		<li><a href="">3</a></li>
-		<li><a href="">next</a></li>
-	</ul>
+</div>
+<div class="container">
+	<div class="paginate">
+		<?php $paginate->show(); ?>
+	</div>
 </div>
