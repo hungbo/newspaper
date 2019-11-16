@@ -1,18 +1,18 @@
-<?php require('views/widgets/header.php'); ?>
-
 <?php 
-require 'libs/loader.php';
 
-$controller = $input->get('controller');
-$action = $input->get('action');
 
-if (empty($controller) && empty($action)) {
-	$controller = 'home';
-	$action = 'index';
-}
+$controller = $_GET['c'] ?? 'home';
+$action = $_GET['a'] ?? 'index';
 
-load($controller,$action);
+$path = "app/controller/".ucfirst($controller)."Controller.php";
 
+echo $path;
+// function __autoload($className)
+// {
+// 	$fileName = $className . '.php';
+// 	if (is_readable($fileName)) {
+// 		require $fileName;
+// 	}
+// }
 
 ?>
-<?php require('views/widgets/footer.php'); ?>
